@@ -1,15 +1,27 @@
-import excelCompare
+import excelCompare as ec
 
-wb1 = "test.xlsm"
-wb2 = "test2.xlsx"
+wb1 = "Lease Expiration Tracking Sheet Jan 2020.xlsm"
+wb2 = "Team Ron Updates (1-7-2020).xlsx"
 col1 = 10
-col2 = 12
+col2 = 10
 row1 = 1
 row2 = 1
 
-torF = excelCompare.CheckSerial(wb1, wb2, col1, col2, row1, row2)
+rowCount = ec.FindLastPopulatedRow(wb1, row1)
+rowCount2 = ec.FindLastPopulatedRow(wb2, row2)
 
-print(str(torF))
+sheet1 = ec.OpenSheet(wb1)
+sheet2 = ec.OpenSheet(wb2)
 
-rowCount = excelCompare.FindLastPopulatedRow(wb1, row1, col1)
-print(str(rowCount))
+for i in range(row1, rowCount):
+  serial1 = ec.GetValue(sheet1, row1, col1)
+  for x in range(row1, rowCount2):
+    serial2 = ec.GetValue(sheet2, row2, col2)
+    if serial1 == serial2:
+      
+    else:
+      continue
+    write status, notes, renewalDate
+
+print("rowCount " + str(rowCount))
+print("rowCount2 " + str(rowCount2))
